@@ -4,16 +4,22 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    private const string JUMP_ANIMATION_TRIGGER = "JumpTrigger";
+
     private PlayerInput playerInput;
     private Rigidbody2D rb;
     private float horizontalMovement;
+    private Animator animator;
+
     [SerializeField] private float jumpForce = 2f;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private float lerpMovement = 0.2f;
 
     private void Start() {
         playerInput = PlayerInput.Instance;
+        animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+
         playerInput.OnJumpEvent += OnJumpEventPerformed;
     }
 
@@ -29,6 +35,7 @@ public class Player : MonoBehaviour {
 
     private void OnJumpEventPerformed(object sender, EventArgs e) {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        animator.SetTrigger(JUMP_ANIMATION_TRIGGER);
     }
 }
 
