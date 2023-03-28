@@ -10,6 +10,8 @@ public class Player : MonoBehaviour {
     private Rigidbody2D rb;
     private float horizontalMovement;
     private Animator animator;
+    private int jumpLimit = 2;
+    private int jumpCount = 0;
 
     [SerializeField] private float jumpForce = 2f;
     [SerializeField] private float moveSpeed = 3f;
@@ -34,8 +36,15 @@ public class Player : MonoBehaviour {
     }
 
     private void OnJumpEventPerformed(object sender, EventArgs e) {
-        rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        animator.SetTrigger(JUMP_ANIMATION_TRIGGER);
+        if (jumpCount < jumpLimit) {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            animator.SetTrigger(JUMP_ANIMATION_TRIGGER);
+            jumpCount++;
+        }
+    }
+
+    public void ResetJump() {
+        jumpCount = 0;
     }
 }
 
