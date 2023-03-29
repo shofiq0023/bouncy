@@ -41,9 +41,24 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: BG_Sky
     uniqueID: 944376455
     locked: 0
-  - name: Player
+  - name: BG_Hill_1
+    uniqueID: 1517849547
+    locked: 0
+  - name: BG_Hill_2
+    uniqueID: 1029364205
+    locked: 0
+  - name: BG_Hill_3
+    uniqueID: 1769712165
+    locked: 0
+  - name: Grounds
+    uniqueID: 1872668787
+    locked: 0
+  - name: Player & Enemy
     uniqueID: 1654066865
+    locked: 0
+  - name: Visuals
+    uniqueID: 1723377795
     locked: 0
