@@ -12,8 +12,8 @@ TagManager:
   - Water
   - UI
   - GroundLayer
-  - 
-  - 
+  - SpikeLayer
+  - EnemyLayer
   - 
   - 
   - 
@@ -50,15 +50,12 @@ TagManager:
   - name: BG_Hill_2
     uniqueID: 1029364205
     locked: 0
-  - name: BG_Hill_3
-    uniqueID: 1769712165
-    locked: 0
   - name: Grounds
     uniqueID: 1872668787
     locked: 0
-  - name: Player & Enemy
+  - name: Player and Enemy
     uniqueID: 1654066865
     locked: 0
-  - name: Visuals
+  - name: GameObject Visuals
     uniqueID: 1723377795
     locked: 0

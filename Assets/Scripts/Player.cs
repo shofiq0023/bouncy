@@ -46,5 +46,12 @@ public class Player : MonoBehaviour {
     public void ResetJump() {
         jumpCount = 0;
     }
+
+    private void OnTriggerEnter2D(Collider2D collider) {
+        // 8 layer is the enemy layer
+        if (collider.gameObject.layer == 8) {
+            Debug.Log("Damage!");
+        }
+    }
 }
 

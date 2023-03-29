@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour {
     [SerializeField] private Vector2 parallaxMultiplier;
+    [SerializeField] private float customTextureScale;
 
     private Transform cameraTransform;
     private Vector3 lastCameraPosition;
@@ -15,7 +16,7 @@ public class ParallaxBackground : MonoBehaviour {
 
         Sprite sprite = GetComponent<SpriteRenderer>().sprite;
         Texture2D spriteTexture = sprite.texture;
-        textureUnitSizeX = spriteTexture.width / sprite.pixelsPerUnit;
+        textureUnitSizeX = (spriteTexture.width / sprite.pixelsPerUnit) * customTextureScale;
     }
 
     private void LateUpdate() {
