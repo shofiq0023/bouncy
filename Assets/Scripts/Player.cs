@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     private const string JUMP_ANIMATION_TRIGGER = "JumpTrigger";
+    private const string PLAYER_DAMAGE_TRIGGER = "DamageTrigger";
 
     private PlayerInput playerInput;
     private Rigidbody2D rb;
@@ -47,11 +48,8 @@ public class Player : MonoBehaviour {
         jumpCount = 0;
     }
 
-    private void OnTriggerEnter2D(Collider2D collider) {
-        // 8 layer is the enemy layer
-        if (collider.gameObject.layer == 8) {
-            Debug.Log("Damage!");
-        }
+    public void TakeDamage(int damage) {
+        animator.SetTrigger(PLAYER_DAMAGE_TRIGGER);
     }
 }
 
