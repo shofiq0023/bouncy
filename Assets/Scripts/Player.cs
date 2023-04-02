@@ -24,6 +24,7 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
 
         playerInput.OnJumpEvent += OnJumpEventPerformed;
+        EnemyScript.OnDamageEvent += TakeDamage;
     }
 
     private void FixedUpdate() {
