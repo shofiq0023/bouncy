@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
+    public delegate void DecreaseLifeEvent(int damage);
+    public static event DecreaseLifeEvent OnDecreaseLife;
+
     private const string JUMP_ANIMATION_TRIGGER = "JumpTrigger";
     private const string PLAYER_DAMAGE_TRIGGER = "DamageTrigger";
 
@@ -13,6 +16,7 @@ public class Player : MonoBehaviour {
     private Animator animator;
     private int jumpLimit = 2;
     private int jumpCount = 0;
+    private int life = 3;
 
     [SerializeField] private float jumpForce = 2f;
     [SerializeField] private float moveSpeed = 3f;
@@ -25,6 +29,8 @@ public class Player : MonoBehaviour {
 
         playerInput.OnJumpEvent += OnJumpEventPerformed;
         EnemyScript.OnDamageEvent += TakeDamage;
+
+        OnDecreaseLife?.Invoke(life);
     }
 
     private void FixedUpdate() {
@@ -50,7 +56,13 @@ public class Player : MonoBehaviour {
     }
 
     public void TakeDamage(int damage) {
-        animator.SetTrigger(PLAYER_DAMAGE_TRIGGER);
+        if (life <= 0) {
+            Debug.Log("Game over!");
+        } else {
+            life--;
+            animator.SetTrigger(PLAYER_DAMAGE_TRIGGER);
+            OnDecreaseLife?.Invoke(life);
+        }
     }
 }
 
