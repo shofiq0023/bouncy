@@ -12,10 +12,18 @@ public class PlayerLifeScript : MonoBehaviour {
         lifeText = GetComponent<TextMeshProUGUI>();
     }
 
+    private void OnDestroy() {
+        Player.OnLifeChange -= ShowLife;
+    }
+
     private void ShowLife(int life) {
         if (life == 0) {
             lifeText.color = Color.red;
+        } else {
+            lifeText.color = Color.white;
         }
         lifeText.text = life.ToString();
+
+        
     }
 }

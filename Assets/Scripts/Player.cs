@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour {
     public delegate void OnLifeChangeEvent(int life);
+    public delegate void OnGameOver();
     public static event OnLifeChangeEvent OnLifeChange;
+    public static event OnGameOver OnGameOverEvent;
+
 
     private const string JUMP_ANIMATION_TRIGGER = "JumpTrigger";
     private const string PLAYER_DAMAGE_TRIGGER = "DamageTrigger";
@@ -33,6 +36,12 @@ public class Player : MonoBehaviour {
         LifeScript.OnLifeConsumeEvent += OnLifeConsumeHandler;
     }
 
+    private void OnDestroy() {
+        playerInput.OnJumpEvent -= OnJumpEventPerformed;
+        EnemyScript.OnDamageEvent -= TakeDamage;
+        LifeScript.OnLifeConsumeEvent -= OnLifeConsumeHandler;
+    }
+
     private void FixedUpdate() {
         HandleMovement();
     }
@@ -57,7 +66,7 @@ public class Player : MonoBehaviour {
 
     public void TakeDamage(int damage) {
         if (life <= 0) {
-            Debug.Log("Game over!");
+            OnGameOverEvent?.Invoke();
         } else {
             life--;
             animator.SetTrigger(PLAYER_DAMAGE_TRIGGER);
