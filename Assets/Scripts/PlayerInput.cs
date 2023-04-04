@@ -7,7 +7,8 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour {
     public static PlayerInput Instance;
     private PlayerInputActions playerInputActions;
-    public event EventHandler OnJumpEvent;
+    public delegate void OnJump();
+    public event OnJump OnJumpEvent;
 
     private void Awake() {
         if (Instance != null) {
@@ -29,6 +30,6 @@ public class PlayerInput : MonoBehaviour {
     }
 
     private void OnJumpEventPerformed(InputAction.CallbackContext context) {
-        OnJumpEvent?.Invoke(this, EventArgs.Empty);
+        OnJumpEvent?.Invoke();
     }
 }

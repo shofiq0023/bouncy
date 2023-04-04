@@ -7,12 +7,12 @@ public class PlayerLifeScript : MonoBehaviour {
     private TextMeshProUGUI lifeText;
 
     private void Start() {
-        Player.OnDecreaseLife += TakeDamage;
+        Player.OnLifeChange += ShowLife;
 
         lifeText = GetComponent<TextMeshProUGUI>();
     }
 
-    private void TakeDamage(int life) {
+    private void ShowLife(int life) {
         if (life == 0) {
             lifeText.color = Color.red;
         }

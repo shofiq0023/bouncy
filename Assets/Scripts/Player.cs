@@ -1,11 +1,10 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
-    public delegate void DecreaseLifeEvent(int damage);
-    public static event DecreaseLifeEvent OnDecreaseLife;
+    public delegate void OnLifeChangeEvent(int life);
+    public static event OnLifeChangeEvent OnLifeChange;
 
     private const string JUMP_ANIMATION_TRIGGER = "JumpTrigger";
     private const string PLAYER_DAMAGE_TRIGGER = "DamageTrigger";
@@ -30,7 +29,8 @@ public class Player : MonoBehaviour {
         playerInput.OnJumpEvent += OnJumpEventPerformed;
         EnemyScript.OnDamageEvent += TakeDamage;
 
-        OnDecreaseLife?.Invoke(life);
+        OnLifeChange?.Invoke(life);
+        LifeScript.OnLifeConsumeEvent += OnLifeConsumeHandler;
     }
 
     private void FixedUpdate() {
@@ -43,7 +43,7 @@ public class Player : MonoBehaviour {
         rb.velocity = Vector2.Lerp(rb.velocity, new Vector2(horizontalMovement * moveSpeed, rb.velocity.y), lerpMovement);
     }
 
-    private void OnJumpEventPerformed(object sender, EventArgs e) {
+    private void OnJumpEventPerformed() {
         if (jumpCount < jumpLimit) {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             animator.SetTrigger(JUMP_ANIMATION_TRIGGER);
@@ -61,8 +61,13 @@ public class Player : MonoBehaviour {
         } else {
             life--;
             animator.SetTrigger(PLAYER_DAMAGE_TRIGGER);
-            OnDecreaseLife?.Invoke(life);
+            OnLifeChange?.Invoke(life);
         }
+    }
+
+    private void OnLifeConsumeHandler() {
+        life++;
+        OnLifeChange?.Invoke(life);
     }
 }
 
