@@ -5,8 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public delegate void OnLifeChangeEvent(int life);
     public delegate void OnGameOver();
+    public delegate void OnGamePause();
+
     public static event OnLifeChangeEvent OnLifeChange;
     public static event OnGameOver OnGameOverEvent;
+    public static event OnGamePause OnGamePauseEvent;
 
 
     private const string JUMP_ANIMATION_TRIGGER = "JumpTrigger";
@@ -40,6 +43,12 @@ public class Player : MonoBehaviour {
         playerInput.OnJumpEvent -= OnJumpEventPerformed;
         EnemyScript.OnDamageEvent -= TakeDamage;
         LifeScript.OnLifeConsumeEvent -= OnLifeConsumeHandler;
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            OnGamePauseEvent?.Invoke();
+        }
     }
 
     private void FixedUpdate() {
