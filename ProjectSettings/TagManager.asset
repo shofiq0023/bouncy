@@ -14,7 +14,7 @@ TagManager:
   - GroundLayer
   - SpikeLayer
   - EnemyLayer
-  - 
+  - GroundCheckObject
   - 
   - 
   - 
@@ -50,13 +50,16 @@ TagManager:
   - name: BG_Hill_2
     uniqueID: 1029364205
     locked: 0
+  - name: Behind Ground Tiles
+    uniqueID: 2228692573
+    locked: 0
   - name: Grounds
     uniqueID: 1872668787
     locked: 0
   - name: Player and Enemy
     uniqueID: 1654066865
     locked: 0
-  - name: GameObject Visuals
+  - name: Front of Player and Enemy
     uniqueID: 1723377795
     locked: 0
   - name: UI
