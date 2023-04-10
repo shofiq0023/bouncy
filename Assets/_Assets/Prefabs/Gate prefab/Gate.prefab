@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d513ddc41edbe748860ab509d23575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gateCollider: {fileID: 4808564340607843569}
+  gateAnimator: {fileID: 2902795525412555254}
 --- !u!1 &4808564339241124146
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +350,7 @@ GameObject:
   - component: {fileID: 4808564339889994813}
   - component: {fileID: 4808564339889994814}
   - component: {fileID: 6606007068324878723}
+  - component: {fileID: 807184993582011406}
   m_Layer: 0
   m_Name: Switch
   m_TagString: Untagged
@@ -384,7 +387,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.387506}
+  m_Offset: {x: 0, y: 0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -395,7 +398,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2691644, y: 0.6656811}
+  m_Size: {x: 0.57, y: 0.6656811}
   m_EdgeRadius: 0
 --- !u!114 &6606007068324878723
 MonoBehaviour:
@@ -410,6 +413,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   childCollider: {fileID: 6530766155578445356}
+--- !u!95 &807184993582011406
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808564339889994812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2db5308f487552cbe8ab0472f51a02be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &4808564340101379547
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4808564340607843568}
   - component: {fileID: 4808564340607843569}
+  - component: {fileID: 2902795525412555254}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -540,3 +564,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 4.1448603}
   m_EdgeRadius: 0
+--- !u!95 &2902795525412555254
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4808564340607843471}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d79411e6951bef5b393c3f440c9ed757, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 2
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
